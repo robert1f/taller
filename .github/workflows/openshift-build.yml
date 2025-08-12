@@ -1,0 +1,20 @@
+name: Build on push (OpenShift)
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install oc
+        run: |
+          curl -sL https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/openshift-client-linux.tar.gz \
+          | tar -xz oc && sudo mv oc /usr/local/bin/
+      - name: Login
+        run: |
+          oc login "${{ secrets.OCP_API }}" \
+            --token="${{ secrets.OCP_TOKEN }}" \
+            --insecure-skip-tls-verify=true
+          oc project rdoldan-dev
+      - name: Trigger build
+        run: |
+          oc start-build web-s2i --wait --follow

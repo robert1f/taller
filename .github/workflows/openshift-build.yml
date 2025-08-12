@@ -11,8 +11,8 @@ jobs:
           | tar -xz oc && sudo mv oc /usr/local/bin/
       - name: Login
         run: |
-          oc login "${{ secrets.OCP_API }}" \
-            --token="${{ secrets.OCP_TOKEN }}" \
+          oc login "https://api.rm2.thpm.p1.openshiftapps.com:6443" \
+            --token="eyJhbGciOiJSUzI1NiIsImtpZCI6Ik44bmJtRDBQX3AwVG9JMm1rSVZBZUNScHdjbVRfUzM3cGR3RXJwZnFibjQifQ.eyJhdWQiOlsiaHR0cHM6Ly9vaWRjLm9wMS5vcGVuc2hpZnRhcHBzLmNvbS8yZmVnZ2V2bDRnbThoa2MxZXNuN3VkcXY2ZW9qcTRpaCJdLCJleHAiOjE3NTUwMTgyOTksImlhdCI6MTc1NTAxNDY5OSwiaXNzIjoiaHR0cHM6Ly9vaWRjLm9wMS5vcGVuc2hpZnRhcHBzLmNvbS8yZmVnZ2V2bDRnbThoa2MxZXNuN3VkcXY2ZW9qcTRpaCIsImp0aSI6ImU4ZTIwNjliLWNkODQtNGQ3ZS05NGEwLWVmNTZkYTAzYTNiOCIsImt1YmVybmV0ZXMuaW8iOnsibmFtZXNwYWNlIjoicmRvbGRhbi1kZXYiLCJzZXJ2aWNlYWNjb3VudCI6eyJuYW1lIjoiY2ktYm90IiwidWlkIjoiYWQ0YWE1OTUtMzcyOS00ZTM0LTk3MzktM2I2YTE3ZTZkMzA5In19LCJuYmYiOjE3NTUwMTQ2OTksInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDpyZG9sZGFuLWRldjpjaS1ib3QifQ.Oy6b_GUHCd-xXIv-ZBCjJQfjdjPGnYcaFIS1l5blob7jg0mxwDr1-_QCoq6Cxe3zWlPOCyz9BlrTCFrFlgehzwRRseI7CdzvDmnoWtaBo_MxWE5mataSEdbWXGjMZC0xMJb5Qd8dRi4gBoEsYaqsGYhhZ-42uGF0ujb0Hnl87ypjzOjyA5dmzz16lmU2AUaQ-SYpKtBgyfgoz3ndx1zOryl_yAjmHTkBzP11cPVyNysa4UnAZTnuZesS0pOSvEjfhAcqk7r0zYaGGEsDfY5hJ-biD1GxgoP1qWVQAYBXjWnYNRlkGvbGXQqueMBDv2IhDCrk7Vtz6wvPc3OuCkTo6x7U5enwqlUO77jBWIxUcxsDJaBI2Lu2uKKSEy6bf9XRdEqkzBifPMU9Ib0ml8_VvidkDq4Gm32Za6e-l7OkB9zrRiOCgkfd-M1Q1sZTvIJ9thgkm-1H10512zajk-2qFoCoerQ_nwxDTNhdz2a_AA8NkR-DHw9vfxAjDulnjS95e8K00SE27K-sff_4tPx-tJb2fuLTuRoB-YmsT8uTZ79HWApHb-A8uTY1aX8ieXUDulpJFh48URHqF-1aQkTC-0Nn6VHugC6xYJmGyjsuWk_GAtFTpexLCBLD7DuZKtGoAANWEv-Q6sFkU8YXoZDpEL_8G4HMfuQLExax17XT63c" \
             --insecure-skip-tls-verify=true
           oc project rdoldan-dev
       - name: Trigger build
